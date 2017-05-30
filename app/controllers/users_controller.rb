@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     #post a new user
     @user = User.new(user_params)
-    byebug
+
     if @user.save
       session[:user_id] = @user.id
       flash.now[:success] = "Successfully created a user"
