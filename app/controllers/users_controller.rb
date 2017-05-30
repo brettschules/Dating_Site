@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def create
     #post a new user
     @user = User.new(user_params)
+    byebug
     if @user.save
       session[:user_id] = @user.id
       flash.now[:success] = "Successfully created a user"
@@ -17,6 +18,10 @@ class UsersController < ApplicationController
       flash.now[:error] = "Please complete all required items"
       render :new
     end
+  end
+
+  def show
+    find_user
   end
 
   def edit
@@ -35,12 +40,18 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :height, :picture_url, :city, :birthday, :phone_number, :email, :password, :men, :women, :genderqueer)
-
-    def find_user
-      @user = User.find(params[:id])
-    end
+    params.require(:user).permit(:first_name, :last_name, :mgender, :fgender, :qgender, :height, :picture_url, :city, :birthday, :phone_number, :email, :password, :men, :women, :genderqueer)
   end
+
+  def find_user
+      @user = User.find(params[:id])
+  end
+
+  # def gender_bool
+  #   if @user.mgender = "1"
+  #     @
+  # end
+
 
 
 end

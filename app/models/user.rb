@@ -8,12 +8,11 @@ class User < ApplicationRecord
 
   validates :first_name,  presence: true, length: { maximum: 50 }
   validates :last_name,  presence: true, length: { maximum: 50 }
-  validates :gender, presence: true
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-                          format: { with: VALID_EMAIL_REGEX },
-                          uniqueness: { case_sensitive: false }
+  # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # validates :email, presence: true, length: { maximum: 255 },
+  #                         format: { with: VALID_EMAIL_REGEX },
+  #                         uniqueness: { case_sensitive: false }
 
   validates :password, length: { minimum: 6 }
 
@@ -22,6 +21,13 @@ class User < ApplicationRecord
 
   validate :checkage?
 
+  validate :gendercheck
+
+  def gendercheck
+    unless self.mgender == true || self.fgender == true|| self.qgender == true
+      errors.add(:base, "Please Specify a Gender")
+    end
+  end
 
   def checkage?
     if (Time.now.yday < self.birthday.yday)
@@ -37,6 +43,32 @@ class User < ApplicationRecord
 
   def to_s
     "#{first_name} #{last_name}"
+  end
+
+  def gender
+    if mgender == true && fgender == true
+      "Trans"
+    elsif mgender == true
+      "Male"
+    elsif fgender == true
+      "Female"
+    elsif qgender == true
+      "Non-conforming or Queer"
+    end
+  end
+
+  def age
+    if Time.now.yday < self.birthday.yday
+      Time.now.year - self.birthday.year - 1
+    else
+      Time.now.year - self.birthday.year
+    end
+  end
+
+  def feet_height
+    feet = self.height/12
+    inches = self.height%12
+    "#{feet}' #{inches}"
   end
 
 
