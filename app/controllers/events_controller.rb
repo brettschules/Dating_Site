@@ -2,7 +2,15 @@ class EventsController < ApplicationController
   before_action :authenticate, except: [:index]
 
   def index
-    @events = Event.all
+    @events = Event.all.order(:date)
+  end
+
+  def index_name
+    @events = Event.all.order(:name, :date)
+  end
+
+  def index_category
+    @events = Event.all.order(:category, :date)
   end
 
   def new
@@ -39,9 +47,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    if current_user.admin
+    @event = Event.find(params[:id])
+    if current_user.admin || @event.host_id == current_user.id
       Event.find(params[:id]).destroy
-      redirect_to root_path, success: "Successfully destroyed an event"
+      redirect_to events_path, success: "Successfully destroyed an event"
     else
       redirect_to root_path, failure: "You must be an admin to delete an event."
     end
