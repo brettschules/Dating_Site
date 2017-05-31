@@ -26,7 +26,6 @@ class EventsController < ApplicationController
 
   def edit
     find_event
-    byebug
     redirect_to root_path, failure: "You must be an admin to edit an event." unless current_user.admin || @event.host_id == current_user.id
   end
 
