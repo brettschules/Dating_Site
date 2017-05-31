@@ -9,14 +9,30 @@
   <tr>
     <th>Event Name</th>
     <th>Event Date</th>
-    <th></th>
+    <th>Category</th>
+    <th>Image</th>
+    <th>Description</th>
   </tr>
   <% @events.each do |event| %>
-  <tr>
-    <td><%= link_to event, event_path(event) %></td>
-    <td><%= event.date  %> </td>
-    <td><img src="<%= event.image_url %>" alt="event image"></td>
-  </tr>
+  <div class="">
+    <tr>
+      <td><br><br><%= link_to event.name, event_path(event) %></td>
+
+      <td>
+        <br><br>
+      <%= event.date.strftime("%m/%d/%y") %>
+      <br>
+      <%= event.date.strftime("%I:%M %p") %>
+       </td>
+
+      <td><br><br><%= event.category  %> </td>
+
+      <td><img src="<%= event.image_url %>" alt="event image" width="250"></td>
+
+      <td><br><%= event.description %></td>
+
+    </tr>
+  </div>
 
   <% end %>
 </table>

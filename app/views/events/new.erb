@@ -1,57 +1,75 @@
 <h1>Plan a New Event</h1>
 <div class="well">
+<div class="row">
+  <div class="col-md-3">
+    <h3>All fields required</h3>
 
-<h3>All fields required</h3>
+    <%= form_for (@event) do |f| %>
+      <br>
+      <div class="field">
+        <%= f.label :name, "Event Name:" %><br>
+          <%= f.text_field :name %><br>
+      </div>
 
-<%= form_for (@event) do |f| %>
-<br>
-<div class="field">
-  <%= f.label :name, "Event Name:" %><br>
-  <%= f.text_field :name %><br>
+      <br>
+
+      <div class="field">
+        <%= f.label :location, "Location:" %><br>
+          <%= f.text_field :location %><br>
+      </div>
+
+      <br>
+
+      <div class="field">
+        <%= f.label :date, "Date and Time:" %><br>
+          <%= f.datetime_local_field :date %><br>
+      </div>
+
+      <br>
+
+      <div class="field">
+        <%= f.label :category, "Pick a Category:" %><br>
+          <%= f.select :category, ['Speed Dating', 'Group Date', 'Concert', 'Dinner', 'Brunch', 'Theater', 'Afterhours Party', 'Overnight Trip', 'Adventure'] %><br>
+      </div>
+
+      <br>
+
+      <div class="field">
+        <%= f.label :description, "Event Description:" %><br>
+          <%= f.text_field :description %><br>
+      </div>
+
+      <br>
+
+      <div class="field">
+        <%= f.label :image_url, "Event image url:" %><br>
+          <%= f.text_field :image_url %><br>
+      </div>
+
+      <br>
+
+
+      <div class="actions">
+        <%= f.submit "Create event", :class=>"btn btn-success btn-md"%>
+      </div>
+
+      <% end %>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-5"></div>
+      <div class="col-md-7"><h3>Get Turnt</h3></div>
+    </div>
+    <div class="row">
+        <img src="https://cognitiveseo.com/blog/wp-content/uploads/2017/04/concert.jpg" alt="fun times", width="100%">
+    </div>
+    <div class="row">
+      <br>
+    </div>
+
+  </div>
+
 </div>
 
-<br>
-
-<div class="field">
-  <%= f.label :location, "Location:" %><br>
-  <%= f.text_field :location %><br>
-</div>
-
-<br>
-
-<div class="field">
-  <%= f.label :date, "Date and Time:" %><br>
-  <%= f.datetime_local_field :date %><br>
-</div>
-
-<br>
-
-<div class="field">
-  <%= f.label :category, "Pick a Category:" %><br>
-  <%= f.select :category, ['Speed Dating', 'Group Date', 'Concert', 'Dinner', 'Brunch', 'Theater', 'Afterhours Party', 'Overnight Trip', 'Adventure'] %><br>
-</div>
-
-<br>
-
-<div class="field">
-  <%= f.label :description, "Event Description:" %><br>
-  <%= f.text_field :description %><br>
-</div>
-
-<br>
-
-<div class="field">
-  <%= f.label :image_url, "Event image url:" %><br>
-  <%= f.text_field :image_url %><br>
-</div>
-
-<br>
-
-
-<div class="actions">
-  <%= f.submit "Create event", :class=>"btn btn-success btn-md"%>
-</div>
-
-<% end %>
 
 </div>
