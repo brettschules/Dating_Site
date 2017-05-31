@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new
+    @event = Event.new(event_params)
 
     if @event.save
       redirect_to event_path(@event), success: "Successfully created a new event, invite your matches!"
@@ -18,6 +18,10 @@ class EventsController < ApplicationController
       flash.now[:error] = "Something went wrong."
       render :new
     end
+  end
+
+  def show
+    find_event
   end
 
   def edit
@@ -46,7 +50,7 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:name, :location, :date, :category, :description)
+      params.require(:event).permit(:name, :location, :date, :category, :description, :image_url)
     end
 
     def find_event
