@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   helper_method :create
+  def index
+    #landing page
+  end
 
   def new
     # regular login page for existing user
