@@ -102,6 +102,12 @@
 
 <br>
 
+<div class="field">
+  <%= f.label :password_confirmation, "* Password
+  confirmation (minimum 6 characters):" %><br>
+  <%= f.password_field :password_confirmation %><br>
+</div>
+<br>
 <div class="actions">
   <%= f.submit "Create User", :class=>"btn btn-success btn-md"%>
 </div>

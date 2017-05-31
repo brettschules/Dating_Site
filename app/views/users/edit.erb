@@ -1,5 +1,5 @@
 <h1>Edit your profile</h1>
-
+<div class="well">
 <%= form_for (@user) do |f| %>
 
 <div class="field">
@@ -99,9 +99,11 @@
   <%= f.password_field :password %><br>
 </div>
 
+<br>
 
 <div class="actions">
-  <%= f.submit %>
+  <%= f.submit "Edit User", :class=>"btn btn-success btn-md"%>
 </div>
 
 <% end %>
+</div>
