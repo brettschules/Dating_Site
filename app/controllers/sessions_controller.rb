@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  helper_method :create
 
   def new
     # regular login page for existing user

@@ -32,7 +32,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    find_user
+    if find_user.update(user_params) && find_user.authenticate(params[:password])
+      redirect_to user_path(find_user)
+    else
+      flash.now[:warning] = "Invalid"
+      render :edit
+    end
   end
 
   def destroy

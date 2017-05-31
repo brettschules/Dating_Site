@@ -1,0 +1,107 @@
+<h1>Edit your preferences</h1>
+
+<%= form_for (@user) do |f| %>
+
+<div class="field">
+  <%= f.label :first_name, "First Name:" %><br>
+  <%= f.text_field :first_name %><br>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :last_name, "Last Name:" %><br>
+  <%= f.text_field :last_name %><br>
+</div>
+
+<br>
+
+<h3> Please check your gender</h3>
+<div class="field">
+  <%= f.label :mgender, "Male:" %><br>
+  <%= f.check_box :mgender %><br>
+</div>
+
+<div class="field">
+  <%= f.label :fgender, "Female:" %><br>
+  <%= f.check_box :fgender %><br>
+</div>
+
+<div class="field">
+  <%= f.label :qgender, "Trans or Gender Queer:" %><br>
+  <%= f.check_box :qgender %><br>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :height, "Height(Inches):" %><br>
+  <%= f.number_field :height %><br>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :picture_url, "Your profile picture url:" %><br>
+  <%= f.text_field :picture_url %><br>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :city, "City:" %><br>
+  <%= f.text_field :city %><br>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :birthday, "Birthday"%><br>
+  <%= f.date_field :birthday %><br>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :phone_number, "Phone Number:" %><br>
+  <%= f.text_field :phone_number %><br>
+</div>
+
+<br>
+
+<h3> Interested in:</h3>
+<div class="field">
+  <%= f.label :men, "Men:" %><br>
+  <%= f.check_box :men %><br>
+</div>
+
+<div class="field">
+  <%= f.label :women, "Women:" %><br>
+  <%= f.check_box :women %><br>
+</div>
+
+<div class="field">
+  <%= f.label :genderqueer, "Trans or non-conforming genders:" %><br>
+  <%= f.check_box :genderqueer %><br>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :email, "Email:" %><br>
+  <%= f.email_field :email %><br>
+</div>
+
+<br>
+
+<div class="field">
+  <%= f.label :password, "Please enter your password to confirm your changes" %><br>
+  <%= f.password_field :password %><br>
+</div>
+
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+<% end %>
