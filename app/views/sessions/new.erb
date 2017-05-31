@@ -1,4 +1,7 @@
+<div class="newlogin">
+
 <h1>Existing User Login Page</h1>
+
 <div class="well">
   <%= form_tag ({controller: 'sessions', action:'create', method:'post'}) do %>
   Email: <%= text_field_tag 'user[email]' %>
@@ -7,4 +10,12 @@
   <%= submit_tag("Sign In", class: "btn btn-success btn-md") %>
 
   <% end %>
+</div>
+
+
+  <div class="row">
+    <div class="text-center">
+          <img src="http://i.imgur.com/nPoamKT.jpg" alt="SpeeDatr" class="img-responsive" width="100%">
+    </div>
+  </div>
 </div>
