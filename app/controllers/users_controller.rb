@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
   def edit
     find_user
+    redirect_to root_path unless current_user.admin || current_user.id == @user.id
   end
 
   def update
@@ -49,12 +50,6 @@ class UsersController < ApplicationController
   def find_user
       @user = User.find(params[:id])
   end
-
-  # def gender_bool
-  #   if @user.mgender = "1"
-  #     @
-  # end
-
 
 
 end

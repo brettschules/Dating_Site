@@ -53,7 +53,7 @@ class User < ApplicationRecord
     elsif fgender == true
       "Female"
     elsif qgender == true
-      "Non-conforming or Queer"
+      "Non-binary"
     end
   end
 
@@ -68,7 +68,7 @@ class User < ApplicationRecord
   def feet_height
     feet = self.height/12
     inches = self.height%12
-    "#{feet}' #{inches}"
+    "#{feet}'#{inches}"
   end
 
 

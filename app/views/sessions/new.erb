@@ -1,0 +1,8 @@
+<h1>Existing User Login Page</h1>
+
+<%= form_tag ({controller: 'sessions', action:'create', method:'post'}) do %>
+Email: <%= text_field_tag 'user[email]' %>
+Password: <%= password_field_tag 'user[password]' %>
+<%= submit_tag("Sign In", class: "btn btn-success btn-lg") %>
+
+<% end %>

@@ -28,7 +28,7 @@
 </div>
 
 <div class="field">
-  <%= f.label :qgender, "Trans or Gender Queer:" %><br>
+  <%= f.label :qgender, "Non-binary:" %><br>
   <%= f.check_box :qgender %><br>
 </div>
 
@@ -81,7 +81,7 @@
 </div>
 
 <div class="field">
-  <%= f.label :genderqueer, "Trans or non-conforming genders:" %><br>
+  <%= f.label :genderqueer, "Non-binary:" %><br>
   <%= f.check_box :genderqueer %><br>
 </div>
 
@@ -99,9 +99,10 @@
   <%= f.password_field :password %><br>
 </div>
 
+<br>
 
 <div class="actions">
-  <%= f.submit %>
+  <%= f.submit "Create User", :class=>"btn btn-success btn-md"%>
 </div>
 
 <% end %>
