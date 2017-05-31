@@ -15,10 +15,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      flash.now[:success] = "Successfully created a user"
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), success: "Successfully created a user"
     else
-      flash.now[:error] = "Please complete all required items"
+      flash.now[:error] = "Please complete all required (*) items"
       render :new
     end
   end

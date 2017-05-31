@@ -1,22 +1,23 @@
 <h1>Register a New User</h1>
+<div class="well">
 
 <%= form_for (@user) do |f| %>
 
 <div class="field">
-  <%= f.label :first_name, "First Name:" %><br>
+  <%= f.label :first_name, "* First Name:" %><br>
   <%= f.text_field :first_name %><br>
 </div>
 
 <br>
 
 <div class="field">
-  <%= f.label :last_name, "Last Name:" %><br>
+  <%= f.label :last_name, "* Last Name:" %><br>
   <%= f.text_field :last_name %><br>
 </div>
 
 <br>
 
-<h3> Please check your gender</h3>
+<h3> * Please check your gender (check one or more)</h3>
 <div class="field">
   <%= f.label :mgender, "Male:" %><br>
   <%= f.check_box :mgender %><br>
@@ -56,7 +57,7 @@
 <br>
 
 <div class="field">
-  <%= f.label :birthday, "Birthday"%><br>
+  <%= f.label :birthday, "* Birthday:"%><br>
   <%= f.date_field :birthday %><br>
 </div>
 
@@ -88,14 +89,14 @@
 <br>
 
 <div class="field">
-  <%= f.label :email, "Email:" %><br>
+  <%= f.label :email, "* Email:" %><br>
   <%= f.email_field :email %><br>
 </div>
 
 <br>
 
 <div class="field">
-  <%= f.label :password, "Password (minimum 6 characters):" %><br>
+  <%= f.label :password, "* Password (minimum 6 characters):" %><br>
   <%= f.password_field :password %><br>
 </div>
 
@@ -106,3 +107,5 @@
 </div>
 
 <% end %>
+
+</div>
