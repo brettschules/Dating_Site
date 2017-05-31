@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :events, through: :event_users
   has_many :event_users
+  has_many :events, through: :event_users
+  #has_and_belongs_to_many :events
+  #wont need above lines with this code
+  #can also delete event_user model with this. Table should be named "events_users" plural and plural
 
   before_save { self.email = email.downcase }
 

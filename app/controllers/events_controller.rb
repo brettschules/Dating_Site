@@ -30,6 +30,7 @@ class EventsController < ApplicationController
 
   def show
     find_event
+    @eventuser = EventUser.new
   end
 
   def edit

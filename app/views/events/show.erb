@@ -15,6 +15,7 @@
         <p><%= @event.date.strftime("%m/%d/%y at %I:%M %p") %></p>
         <p><%= @event.category %></p>
         <p><%= @event.description %></p>
+        <%= render "attend" %>
       </div>
       </section>
     </div>
