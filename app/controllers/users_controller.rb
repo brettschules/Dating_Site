@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user), success: "Successfully created a user"
+      redirect_to user_path(@user), notice: "Successfully created a user"
     else
       flash.now[:error] = "Please complete all required (*) items"
       render :new
@@ -35,13 +35,19 @@ class UsersController < ApplicationController
     if find_user.update(user_params) && find_user.authenticate(params[:password])
       redirect_to user_path(find_user)
     else
-      flash.now[:warning] = "Invalid"
+      flash.now[:warning] = "Invalid attributes"
       render :edit
     end
   end
 
   def destroy
-    find_user
+    User.find(params[:id]).destroy
+    if current_user.admin
+      redirect_to users_path, notice: "Successfully destroyed a user"
+    else
+      session.delete :user_id
+      redirect_to root_path, notice: "Sorry to see you go."
+    end
   end
 
 

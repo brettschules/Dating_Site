@@ -1,1 +1,22 @@
-<h1>test</h1>
+<div class="jumbotron">
+  <h1>Welcome to SpeedDatr</h1>
+</div>
+
+<table class="table table-hover">
+  <col width="200">
+  <col width="200">
+  <col width="200">
+  <tr>
+    <th>Event Name</th>
+    <th>Event Date</th>
+    <th></th>
+  </tr>
+  <% @events.each do |event| %>
+  <tr>
+    <td><%= link_to event, event_path(event) %></td>
+    <td><%= event.date  %> </td>
+    <td><img src="<%= event.image_url %>" alt="event image"></td>
+  </tr>
+
+  <% end %>
+</table>
