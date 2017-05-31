@@ -12,15 +12,16 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      redirect_to user_path(user), notice: "You are now logged in."
     else
-      redirect_to root_path
+      flash.now[:error] = "You have entered invaild information."
+      render :new
     end
   end
 
   def destroy
     #end session
     session.delete :user_id
-    redirect_to root_path
+    redirect_to root_path, notice: "You have logged out."
   end
 end

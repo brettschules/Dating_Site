@@ -15,10 +15,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      flash.now[:success] = "Successfully created a user"
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), success: "Successfully created a user"
     else
-      flash.now[:error] = "Please complete all required items"
+      flash.now[:error] = "Please complete all required (*) items"
       render :new
     end
   end
@@ -29,6 +28,7 @@ class UsersController < ApplicationController
 
   def edit
     find_user
+    redirect_to root_path unless current_user.admin || current_user.id == @user.id
   end
 
   def update
@@ -54,12 +54,6 @@ class UsersController < ApplicationController
   def find_user
       @user = User.find(params[:id])
   end
-
-  # def gender_bool
-  #   if @user.mgender = "1"
-  #     @
-  # end
-
 
 
 end

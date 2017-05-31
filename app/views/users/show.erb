@@ -1,21 +1,27 @@
-<h1> <%= @user.to_s %> </h1>
-<img src= <%= @user.picture_url %> alt="Profile picture" height="200">
-<h3> <%= @user.age %>, <%= @user.gender %> </h3>
-<h3> City: <%= @user.city %> </h3>
-<h3> Height: <%= @user.feet_height %> </h3>
-<h3>Interested In:</h3>
-<ul>
-<% if @user.genderqueer == true %>
-<li><%= "trans or genderqueer people"  %></li>
+<h1> <%= @user.to_s %>
+<% if @user.id == current_user.id || current_user.admin == true %>
+  <%= link_to 'Update Profile', edit_user_path(@user), class:"btn btn-success btn-md" %>
 <% end %>
-
-<% if @user.men == true %>
-<li> <%= "men"  %></li>
-<% end %>
-
-  <% if @user.women == true %>
-  <li><%= "women"  %> </li>
+</h1>
+<div class="well">
+  <img src= <%= @user.picture_url %> alt="Profile picture" height="200">
+  <h3> <%= @user.age %>, <%= @user.gender %> </h3>
+  <h3> City: <%= @user.city %> </h3>
+  <h3> Height: <%= @user.feet_height %> </h3>
+  <h3>Interested In:</h3>
+  <ul>
+  <% if @user.genderqueer == true %>
+  <li><%= "non-binary"  %></li>
   <% end %>
-</ul>
 
-<%= link_to 'Edit your preferences', edit_user_path(@user) %>
+  <% if @user.men == true %>
+  <li> <%= "men"  %></li>
+  <% end %>
+
+    <% if @user.women == true %>
+    <li><%= "women"  %> </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-danger btn-md",  data: {confirm: 'Are you sure?'} %>
