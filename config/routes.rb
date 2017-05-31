@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   root "sessions#index"
 
-  resources :event_users, only: [:new, :create, :destroy]
+  resources :event_users, only: [:new, :create]
   resources :events
+
+  delete '/events/:id', to:"events#destroy", as: "delete_event"
 
 
   resources :users

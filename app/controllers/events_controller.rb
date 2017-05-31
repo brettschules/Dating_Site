@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def edit
     find_event
-    redirect_to root_path, error: "You must be an admin to edit an event." unless current_user.admin
+    redirect_to root_path, failure: "You must be an admin to edit an event." unless current_user.admin
   end
 
   def update

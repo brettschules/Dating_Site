@@ -4,22 +4,57 @@
   </div>
   <div class="col-md-8">
     <div class="well">
-      <section class="feature_article">
+
         <div class="image_wrapper aspect-ratio-16-9">
-          <img src="<%= @event.image_url %>"  width="500px" title="<%=@event.name%>" class="center-block">
+          <img src="<%= @event.image_url %>" width="500px" title="<%=@event.name%>" class="center-block">
         </div>
 
-        <div class = "text-center">
-        <h1><%= @event.name %></h1>
-        <p><%= @event.location %></p>
-        <p><%= @event.date.strftime("%m/%d/%y at %I:%M %p")  %></p>
-        <p><%= @event.category %></p>
-        <p><%= @event.description %></p>
-      </div>
-      </section>
+        <div class="text-center">
+          <h1><%= @event.name %></h1>
+          <p>
+            <%= @event.location %>
+          </p>
+          <p>
+            <%= @event.date.strftime("%m/%d/%y at %I:%M %p")  %>
+          </p>
+          <p>
+            <%= @event.category %>
+          </p>
+          <p>
+            <%= @event.description %>
+          </p>
+        </div>
+
     </div>
   </div>
   <div class="col-md-2">
 
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-5">
+    <div class="text-right">
+    <% if current_user.admin %>
+      <%= link_to "Edit Event", edit_event_path(@event), class:"btn btn-warning btn-md" %>
+    <% end %>
+    </div>
+  </div>
+
+
+  <div class="col-md-2">
+    <div class="text-center">
+    <%= link_to "All Events", events_path, class:"btn btn-info btn-md" %>
+    </div>
+  </div>
+
+
+  <div class="col-md-5">
+    <div class="text-left">
+      <% if current_user.admin %>
+          <%= link_to "Delete Event", delete_event_path(@event), method: :delete, class:"btn btn-danger btn-md" %>
+      <% end %>
+    </div>
   </div>
 </div>
