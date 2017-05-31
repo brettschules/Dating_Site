@@ -23,3 +23,27 @@
 
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="text-right">
+    <% if current_user.admin %>
+      <%= link_to "Edit Event", edit_event_path(@event), class:"btn btn-warning btn-md" %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="text-center">
+    <%= link_to "All Events", events_path, class:"btn btn-info btn-md" %>
+    </div>
+  </div>
+  
+  <div class="col-md-5">
+    <div class="text-left">
+      <% if current_user.admin %>
+          <%= link_to "Delete Event", delete_event_path(@event), method: :delete, class:"btn btn-danger btn-md" %>
+      <% end %>
+    </div>
+  </div>
+</div>
