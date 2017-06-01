@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  def mylikes
+    @likes = Match.where(liked_id: @current_user)
+  end
+
   def new
     # get signup page
     @user = User.new
@@ -41,6 +46,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    EventUser.destroy(EventUser.where(user_id: params[:id]).ids)
+    Match.destroy(Match.where(likes_id: params[:id]).ids)
+    Match.destroy(Match.where(liked_id: params[:id]).ids)
     User.find(params[:id]).destroy
     if current_user.admin
       redirect_to users_path, notice: "Successfully destroyed a user"

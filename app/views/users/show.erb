@@ -31,3 +31,7 @@
 <% if @user == current_user %>
 <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-danger btn-md",  data: {confirm: 'Are you sure?'} %>
 <% end %>
+<br><br>
+<% if @user == current_user || current_user.admin %>
+<%= link_to "Delete Account", delete_user_path(@user), method: :delete, class: "btn btn-danger btn-md",  data: {confirm: 'Are you sure? This is not reversible'} %>
+<% end %>

@@ -8,10 +8,14 @@ Rails.application.routes.draw do
   get '/events/categories', to: "events#index_category", as: "event_category_sort"
   resources :events
 
-  delete '/events/:id', to:"events#destroy", as: "delete_event"
+  delete '/events/:id', to: "events#destroy", as: "delete_event"
 
 
-  resources :users
+  resources :users, except: [:destroy]
+  get 'users/:id/mylikes', to: "users#mylikes", as: "my_likes"
+  get 'users/:id/mymatches', to: "users#mymatches", as: "my_matches"
+  delete 'users/:id/delete', to: "users#destroy", as: "delete_user"
+
 
   resources :matches, only: [:new, :create, :destroy]
 
