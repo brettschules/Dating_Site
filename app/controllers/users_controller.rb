@@ -32,10 +32,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    if find_user.update(user_params) && find_user.authenticate(params[:password])
+    if find_user.authenticate(params[:user][:password]) && find_user.update(user_params)
       redirect_to user_path(find_user)
     else
-      flash.now[:warning] = "Invalid attributes"
+      flash.now[:error] = "Invalid attributes"
       render :edit
     end
   end

@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
   has_many :event_users
   has_many :events, through: :event_users
+
+  has_many :likes, class_name: "Match", foreign_key: :likes_id
+  has_many :liked, class_name: "Match", foreign_key: :liked_id
+
   #has_and_belongs_to_many :events
   #wont need above lines with this code
   #can also delete event_user model with this. Table should be named "events_users" plural and plural
@@ -71,9 +75,11 @@ class User < ApplicationRecord
   end
 
   def feet_height
-    feet = self.height/12
-    inches = self.height%12
-    "#{feet}'#{inches}"
+    if self.height
+      feet = self.height/12
+      inches = self.height%12
+      "#{feet}'#{inches}"
+    end
   end
 
 

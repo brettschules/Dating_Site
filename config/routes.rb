@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root "sessions#index"
 
   resources :event_users, only: [:new, :create]
@@ -11,6 +12,10 @@ Rails.application.routes.draw do
 
 
   resources :users
+
+  resources :matches, only: [:new, :create, :destroy]
+
+
 
 
   get '/signin', to: "sessions#new", as: "login_page"

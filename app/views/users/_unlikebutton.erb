@@ -1,0 +1,3 @@
+<% if Match.where(liked_id: current_user.id, likes_id: @user.id ) != [] %>
+<%= link_to "Unlike", match_path(@user), method: :delete, class: "btn btn-danger btn-md",  data: {confirm: 'Are you sure? :('} %>
+<% end %>
