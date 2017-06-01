@@ -31,6 +31,7 @@ class EventsController < ApplicationController
 
   def show
     find_event
+    @count = @event.users.count
     @eventuser = EventUser.new
   end
 

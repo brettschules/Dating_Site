@@ -33,13 +33,15 @@ class User < ApplicationRecord
   end
 
   def checkage?
-    if (Time.now.yday < self.birthday.yday)
-      unless 18 <= (Time.now.year - self.birthday.year - 1)
-        errors.add(:birthday, "User is not over 18")
-      end
-    else
-      unless 18 <= Time.now.year - self.birthday.year
-        errors.add(:birthday, "User is not over 18")
+    if self.birthday
+      if (Time.now.yday < self.birthday.yday)
+        unless 18 <= (Time.now.year - self.birthday.year - 1)
+          errors.add(:birthday, "User is not over 18")
+        end
+      else
+        unless 18 <= Time.now.year - self.birthday.year
+          errors.add(:birthday, "User is not over 18")
+        end
       end
     end
   end

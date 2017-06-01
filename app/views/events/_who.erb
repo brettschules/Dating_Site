@@ -3,7 +3,9 @@
   <div class="col-md-8">
 
       <div class="text-left">
-        <h3>Guest List</h3>
+        <h3>
+          Attending: <%=@count%> guest<%="s" if @count > 1 %>
+        </h3>
         <table class="table table-hover">
           <col width="200">
           <col width="200">
@@ -13,14 +15,13 @@
             <th>Guest Gender</th>
             <th>Guest Interest</th>
           </tr>
+          <ul>
           <% @event.users.each do |user| %>
             <tr>
               <td>
-                <ol>
-                  <li>
-                    <%= link_to user.to_s, user_path(user)%>
-                  </li>
-                </ol>
+                <li>
+                  <%= link_to user.to_s, user_path(user)%>
+                </li>
               </td>
               <td><%=user.gender%></td>
               <td>  <% if user.genderqueer == true %>
@@ -37,6 +38,7 @@
               </td>
             </tr>
             <% end %>
+          </ul>
         </table>
       </div>
 
