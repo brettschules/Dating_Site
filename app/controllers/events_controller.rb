@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.order(:date)
+
   end
 
   def index_name
@@ -23,7 +24,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event), success: "Successfully created a new event, invite your matches!"
     else
-      flash.now[:error] = "Something went wrong."
+      flash.now[:error] = "Please enter the required fields"
       render :new
     end
   end
@@ -66,6 +67,4 @@ class EventsController < ApplicationController
     def find_event
         @event = Event.find(params[:id])
     end
-
-
 end
