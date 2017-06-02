@@ -8,6 +8,9 @@ class SessionsController < ApplicationController
     # regular login page for existing user
   end
 
+  def about
+  end
+
   def create
     #post new session for existing user
 

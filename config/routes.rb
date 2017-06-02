@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root "sessions#index"
 
+  get '/about', to: "sessions#about", as: "about"
+
   resources :event_users, only: [:new, :create]
 
   delete '/event_users/delete', to: "event_users#destroy", as: "delete_rsvp"

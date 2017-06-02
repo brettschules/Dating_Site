@@ -23,15 +23,25 @@
     <li><%= "women"  %> </li>
     <% end %>
   </ul>
+  <%= render "likebutton" %>
+  <%= render "unlikebutton" %>
 </div>
 
-<%= render "likebutton" %>
-<%= render "unlikebutton" %>
+<div class="row">
+  <div class="col-md-1">
+    <% if @user == current_user || current_user.admin %>
+    <%= link_to "Delete Account", delete_user_path(@user), method: :delete, class: "btn btn-danger btn-md",  data: {confirm: 'Are you sure? This is not reversible'} %>
+    <% end %>
+  </div>
+  
+  <div class="col-md-1">
+    <% if @user == current_user %>
+    <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-danger btn-md",  data: {confirm: 'Are you sure?'} %>
+    <% end %>
+  </div>
 
-<% if @user == current_user %>
-<%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-danger btn-md",  data: {confirm: 'Are you sure?'} %>
-<% end %>
-<br><br>
-<% if @user == current_user || current_user.admin %>
-<%= link_to "Delete Account", delete_user_path(@user), method: :delete, class: "btn btn-danger btn-md",  data: {confirm: 'Are you sure? This is not reversible'} %>
-<% end %>
+
+  <div class="col-md-10">
+
+  </div>
+</div>
