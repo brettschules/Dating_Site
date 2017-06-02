@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
 
   resources :users, except: [:destroy]
-  get 'users/:id/mylikes', to: "users#mylikes", as: "my_likes"
-  get 'users/:id/mymatches', to: "users#mymatches", as: "my_matches"
+  get 'myliked', to: "users#myliked", as: "my_liked"
+  get 'mylikes', to: "users#mylikes", as: "my_likes"
+  get 'mymatches', to: "users#mymatches", as: "my_matches"
   delete 'users/:id/delete', to: "users#destroy", as: "delete_user"
 
 

@@ -5,8 +5,35 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def myliked
+    @liked = current_user.liked
+    liked = []
+    @liked.each {|l| liked << l.likes_id}
+    liked = liked.uniq
+    @users = User.where(id: liked)
+  end
+
   def mylikes
-    @likes = Match.where(liked_id: @current_user)
+    @likes = current_user.likes
+    likes = []
+    @likes.each {|l| likes << l.liked_id}
+    likes = likes.uniq
+    @users = User.where(id: likes)
+  end
+
+  def mymatches
+    @likes = current_user.likes
+    likes = []
+    @likes.each {|l| likes << l.liked_id}
+    likes = likes.uniq
+
+    @liked = current_user.liked
+    liked = []
+    @liked.each {|l| liked << l.likes_id}
+    liked = liked.uniq
+
+    match = liked && likes
+    @users = User.where(id: match)
   end
 
   def new
