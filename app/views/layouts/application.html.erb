@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!--  this breaks the nav bar <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
+    <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
 
 
     <%= csrf_meta_tag %>
@@ -35,7 +35,8 @@
     <![endif]-->
   </head>
   <header>
-    <nav class="navbar navbar-inverse fixed-top" id="custom-nav">
+
+    <nav class="navbar navbar fixed-top" style="background-color: #90DDF0" >
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -62,7 +63,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
         <% if current_user.admin %>
-          <li>ADMIN MODE</li>
+          <span style="color">ADMIN MODE</span>
         <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name%>'s Actions <span class="caret"></span></a>
@@ -80,6 +81,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+</div>
 </header>
 <body>
 <% flash.each do |name, msg| %>
