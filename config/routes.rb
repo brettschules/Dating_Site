@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "sessions#index"
 
   resources :event_users, only: [:new, :create]
+
+  delete '/event_users/delete', to: "event_users#destroy", as: "delete_rsvp"
   get '/events/names', to: "events#index_name", as: "event_name_sort"
   get '/events/categories', to: "events#index_category", as: "event_category_sort"
   resources :events

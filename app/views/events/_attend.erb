@@ -1,5 +1,32 @@
+<% if current_user.admin %>
+  <%= form_tag( event_users_path,method: "POST") do %>
+  <%= select_tag :user_id, options_for_select(@users.collect{ |u| [u.to_s, u.id] }) %>
+  <%=hidden_field_tag(:event_id, @event.id) %>
+  <%= submit_tag("Add a Guest", class: "btn btn-danger btn-lg") %>
+  <% end %>
+
+<br>
+
+  <%= form_tag( delete_rsvp_path, method: "DELETE") do %>
+    <%= select_tag :user_id, options_for_select(@users.collect{ |u| [u.to_s, u.id] }) %>
+    <%=hidden_field_tag(:event_id, @event.id) %>
+    <%= submit_tag("Un-RSVP a Guest", class: "btn btn-danger btn-lg") %>
+  <% end %>
+
+<% elsif EventUser.where(user_id: current_user.id, event_id: @event.id) == [] %>
+
 <%= form_tag( event_users_path,method: "POST") do %>
 <%=hidden_field_tag(:user_id, current_user.id) %>
 <%=hidden_field_tag(:event_id, @event.id) %>
 <%= submit_tag("Attend", class: "btn btn-danger btn-lg") %>
+<% end %>
+
+<% else %>
+
+<%= form_tag( delete_rsvp_path, method: "DELETE") do %>
+<%=hidden_field_tag(:user_id, current_user.id) %>
+<%=hidden_field_tag(:event_id, @event.id) %>
+<%= submit_tag("Un-RSVP", class: "btn btn-danger btn-lg") %>
+<% end %>
+
 <% end %>
