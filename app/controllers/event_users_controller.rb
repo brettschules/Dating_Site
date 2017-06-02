@@ -26,10 +26,9 @@ class EventUsersController < ApplicationController
     if EventUser.where(user_id: params[:user_id], event_id: params[:event_id]) != []
       EventUser.destroy(EventUser.where(user_id: params[:user_id], event_id: params[:event_id]).ids)
       redirect_to event_path(@event), notice: "User removed from event"
+    else
+      redirect_to event_path(@event), notice: "User was not attending"
     end
-
-    redirect_to event_path(@event), notice: "User was not Attending"
-
   end
 
 

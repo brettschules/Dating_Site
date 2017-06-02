@@ -1,31 +1,30 @@
 <div class="jumbotron">
   <h1>Welcome to SpeeDatr</h1>
 </div>
-
+  <h5>* Click To Sort *</h5>
 <table class="table table-hover">
   <col width="200">
   <col width="200">
   <col width="200">
   <tr>
-    <th><%=link_to "Event Name", event_name_sort_path %></th>
-    <th><%=link_to "Event Date", events_path %></th>
-    <th><%=link_to "Category", event_category_sort_path %></th>
-    <th>Image</th>
-    <th>Description</th>
+    <th><h4><%=link_to "Event Name", event_name_sort_path %></h4></th>
+    <th><h4><%=link_to "Event Date", events_path %></h4></th>
+    <th><h4><%=link_to "Category", event_category_sort_path %></h4></th>
+    <th><h4>Image</h4></th>
+    <th><h4>Description</h4></th>
   </tr>
   <% @events.each do |event| %>
   <div class="">
     <tr>
-      <td><br><br><%= link_to event.name, event_path(event) %></td>
+      <td><br><h3><%= link_to event.name, event_path(event) %></h3></td>
 
       <td>
-        <br><br>
-      <%= event.date.strftime("%m/%d/%y") %>
-      <br>
-      <%= event.date.strftime("%I:%M %p") %>
+        <br>
+      <h4><%= event.date.strftime("%a %B #{event.date.day.ordinalize}, %Y") %></h4>
+      <h4><%= event.date.strftime("%I:%M %p") %></h4>
        </td>
 
-      <td><br><br><%= event.category  %> </td>
+      <td><br><h4><%= event.category  %></h4> </td>
 
       <td><img src="<%= event.image_url %>" alt="event image" width="250"></td>
 

@@ -12,16 +12,21 @@
           <col width="200">
           <tr>
             <th>Guest Name</th>
+            <th>Picture</th>
             <th>Guest Gender</th>
             <th>Guest Interest</th>
+
           </tr>
-          <ul>
+
           <% @event.users.each do |user| %>
             <tr>
               <td>
-                <li>
-                  <%= link_to user.to_s, user_path(user)%>
+
+                  <h3><%= link_to user.to_s, user_path(user)%></h3>
                 </li>
+              </td>
+              <td>
+                <img src=<%=user.picture_url%> alt="prof pic" width="150px">
               </td>
               <td><%=user.gender%></td>
               <td>  <% if user.genderqueer == true %>
@@ -38,7 +43,7 @@
               </td>
             </tr>
             <% end %>
-          </ul>
+          
         </table>
       </div>
 
